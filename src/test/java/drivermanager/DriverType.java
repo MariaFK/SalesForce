@@ -3,5 +3,6 @@ package drivermanager;
 public enum DriverType {
 
     CHROME,
-    EDGE
+    EDGE,
+    REMOTE
 }
