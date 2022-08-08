@@ -20,10 +20,8 @@ public class CreateAccountTest extends BaseTest {
         accountsPage.openAccountsPage()
                 .openNewAccountModel()
                 .fillInAccountForm(accountModel);
-
+        NewAccountModelPage newAccountModelPage = new NewAccountModelPage(driver);
         String expectedName = accountModel.getAccountName();
-        String realName = driver.findElement(By.xpath("//lightning-formatted-text[@class = 'custom-truncate']"))
-                .getText();
-        Assert.assertEquals(realName, expectedName, "Account isn't created");
+        Assert.assertEquals(newAccountModelPage.accountName(), expectedName, "Account isn't created");
     }
 }

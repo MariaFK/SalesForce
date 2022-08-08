@@ -4,6 +4,7 @@ import elements.DropdownList;
 import elements.TextInput;
 import elements.Textarea;
 import models.NewAccountModel;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,6 +19,9 @@ public class NewAccountModelPage extends BasePage{
 
     @FindBy(xpath = "//div[contains(@class, 'modal-body')]//span[text()='Copy Billing Address to Shipping Address']//parent::label//span")
     WebElement COPY_BILLING_ADDRESS_TO_SHIPPING_ADDRESS;
+
+    @FindBy(xpath ="//lightning-formatted-text[@class = 'custom-truncate']")
+    WebElement ACCOUNT_NAME;
 
     public NewAccountModelPage(WebDriver driver) {
         super(driver);
@@ -38,9 +42,13 @@ public class NewAccountModelPage extends BasePage{
         new TextInput(driver, "Billing State/Province").inputText(newAccount.getBillingStateProvince());
         new TextInput(driver, "Billing Zip/Postal Code").inputText(newAccount.getBillingZipCode());
         new TextInput(driver, "Billing Country").inputText(newAccount.getBillingCountry());
-
-
         COPY_BILLING_ADDRESS_TO_SHIPPING_ADDRESS.click();
         SAVE_BUTTON.click();
     }
+
+    public String accountName(){
+        String realName = ACCOUNT_NAME.getText();
+        return realName;
+    }
+
 }
