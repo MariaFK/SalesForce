@@ -33,8 +33,7 @@ public class CreateAccountTest extends BaseTest {
         LOGGER.info(String.format("Page %s initialized", NewAccountModelPage.class.getName()));
         NewAccountModelPage newAccountModelPage = new NewAccountModelPage(driver);
         LOGGER.info("Check if account is created");
-        String expectedName = "User";
-                //accountModel.getAccountName();
+        String expectedName = accountModel.getAccountName();
         Assert.assertEquals(newAccountModelPage.accountName(), expectedName, "Account isn't created");
     }
 }
